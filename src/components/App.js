@@ -23,13 +23,13 @@ class App extends React.Component {
          navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
-            const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`
 
             this.fetchData(api);
          })
       } 
       else {
-         const api = `http://api.openweathermap.org/data/2.5/weather?q=london&appid=${apiKey}`
+         const api = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=${apiKey}`
          this.fetchData(api)
       }
    }
@@ -38,7 +38,7 @@ class App extends React.Component {
       e.preventDefault();
       let city = e.target.city.value;
       const apiKey = '1b230525f086dcd9fd52e0de394b4545';
-      const api = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+      const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
       try {
          this.fetchData(api);
@@ -89,7 +89,7 @@ class App extends React.Component {
                   <span>C</span>
                </div>
                <div className="icon">
-                     <img src={`http://openweathermap.org/img/wn/${this.state.icon}@2x.png`} alt={this.state.desc} />
+                     <img src={`https://openweathermap.org/img/wn/${this.state.icon}@2x.png`} alt={this.state.desc} />
                </div>
             </div>
 
