@@ -17,19 +17,18 @@ class App extends React.Component {
    componentDidMount() {
       let long;
       let lat;
-      const apiKey = '1b230525f086dcd9fd52e0de394b4545';
 
       if(navigator.geolocation){
          navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_OWM_API_KEY}`
 
             this.fetchData(api);
          })
       } 
       else {
-         const api = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=${apiKey}`
+         const api = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=${process.env.REACT_APP_OWM_API_KEY}`
          this.fetchData(api)
       }
    }
@@ -37,8 +36,7 @@ class App extends React.Component {
    handleSubmit = (e) => {
       e.preventDefault();
       let city = e.target.city.value;
-      const apiKey = '1b230525f086dcd9fd52e0de394b4545';
-      const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+      const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_OWM_API_KEY}`;
 
       try {
          this.fetchData(api);
